@@ -18,6 +18,13 @@ Create load balancer service on k8s:
 kubectl -n johnaxel-apy-ns apply -f frontend/podLB.yaml
 kubectl -n johnaxel-apy-ns apply -f frontend/podLBfront.yaml
 ```
+Add labels
+```buildoutcfg
+kubectl -n johnaxel-apy-ns label svc svc-load-front tier=tier-apy1-backendd
+kubectl -n johnaxel-apy-ns label svc svc-load-front role=load-front
+kubectl -n johnaxel-apy-ns label svc svc-load-apy tier=tier-apy1-backendd
+kubectl -n johnaxel-apy-ns label svc svc-load-apy role=load-front
+```
 Deploy front and backend
 ```buildoutcfg
 kubectl -n johnaxel-apy-ns apply -f frontend/deploypod.yaml
